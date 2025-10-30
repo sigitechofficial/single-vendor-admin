@@ -1,0 +1,84 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f4f5fa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e2e2e;
+  border-radius: 32px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2e2e2e;
+}
+
+.css-13cymwt-control,
+.css-t3ipsp-control {
+  background: #f4f4f4 !important;
+  border: none !important;
+  padding: 5px !important;
+  outline: none;
+}
+
+.inner .css-13cymwt-control,
+.inner .css-t3ipsp-control {
+  background: white !important;
+  border: none !important;
+  padding: 5px !important;
+  outline: none;
+}
+
+.pac-container {
+  background-color: #ffffff;
+  border: 1px solid #d4d4d4;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 9999 !important;
+  position: relative;
+}
+
+.pac-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.pac-item:hover {
+  background-color: #f0f0f0;
+}
+
+summary::marker {
+  display: none;
+}
+
+.hide-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none !important;
+}
+
+
+/* custom scrollbar for modals */
+
+
+.scroll-modal::-webkit-scrollbar {
+  width: 3px;
+}
+
+.scroll-modal::-webkit-scrollbar-track {
+  background-color: #f4f5fa;
+}
+
+.scroll-modal::-webkit-scrollbar-thumb {
+  background: #008b25;
+  border-radius: 32px;
+}
+
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled {
+  cursor: not-allowed;
+}

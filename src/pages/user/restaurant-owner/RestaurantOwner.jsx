@@ -155,20 +155,20 @@ export default function RestaurantOwner() {
   const cityOptions = [{ value: null, label: "All Cities" }].concat(
     Array.isArray(cities)
       ? cities
-          .filter((city) => city.status)
-          .map((city) => ({
-            value: city.id,
-            label: city.name.trim(),
-          }))
+        .filter((city) => city.status)
+        .map((city) => ({
+          value: city.id,
+          label: city.name.trim(),
+        }))
       : []
   );
 
   const zoneOptions = [{ value: null, label: "All Zones" }].concat(
     Array.isArray(zones)
       ? zones.map((zone) => ({
-          value: zone.id,
-          label: zone.name.trim(),
-        }))
+        value: zone.id,
+        label: zone.name.trim(),
+      }))
       : []
   );
 
@@ -466,7 +466,7 @@ export default function RestaurantOwner() {
           <div className="bg-white rounded-lg p-5">
             <div className="flex justify-between items-center flex-wrap gap-5">
               <h2 className="text-themeRed text-lg font-bold font-norms">
-                {t("allRestaurantOwners")}
+                {t("All Branches Owners")}
               </h2>
               <div className="flex gap-x-2">
                 <div data-testid="restaurantowner-helment">
@@ -482,7 +482,7 @@ export default function RestaurantOwner() {
 
                 <div className="flex gap-2" data-testid="restaurantowner-addowner-btn">
                   <HelmetBtn
-                    text={t("Add Restaurant Owner")}
+                    text={t("Add Branches Owner")}
                     onClick={openModal}
                   />
                 </div>
@@ -504,7 +504,7 @@ export default function RestaurantOwner() {
             <ModalContent>
               <ModalHeader padding={0}>
                 <div className="border-b-2 border-b-[#0000001F] px-5 py-2.5 text-lg font-norms font-medium">
-                  {t("Add Restaurant Owner")}
+                  {t("Add Branches Owner")}
                 </div>
               </ModalHeader>
               <ModalCloseButton />
@@ -815,31 +815,31 @@ export default function RestaurantOwner() {
                       <BlackButton
                         text={t("Clear All")}
                         onClick={() => {
-                        setTempFilterData({
-                          country: null,
-                          city: null,
-                          zone: null,
-                        });
-                        // Reset to show all data
-                        setCities(filterOptions?.data?.city || []);
-                        setZones(filterOptions?.data?.zones || []);
-                      }}
-                    />
+                          setTempFilterData({
+                            country: null,
+                            city: null,
+                            zone: null,
+                          });
+                          // Reset to show all data
+                          setCities(filterOptions?.data?.city || []);
+                          setZones(filterOptions?.data?.zones || []);
+                        }}
+                      />
                     </div>
                     <div data-testid="restaurantowner-filter-apply-btn">
                       <RedButton
                         text={t("Apply Filter")}
                         onClick={() => {
-                        setFilterData({
-                          country: tempFilterData.country,
-                          city: tempFilterData.city,
-                          zone: tempFilterData.zone,
-                        });
-                        setFilterModal(false);
-                      }}
-                    />
-                  </div>
+                          setFilterData({
+                            country: tempFilterData.country,
+                            city: tempFilterData.city,
+                            zone: tempFilterData.zone,
+                          });
+                          setFilterModal(false);
+                        }}
+                      />
                     </div>
+                  </div>
                 </div>
               </ModalBody>
             </ModalContent>

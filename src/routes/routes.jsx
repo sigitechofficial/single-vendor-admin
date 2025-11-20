@@ -57,38 +57,7 @@ const RolesAndPermissions = lazy(() =>
   import("../pages/user/roles-and-permissions/RolesAndPermissions")
 );
 
-// Restaurant Items & Menu
-const AddOnCollections = lazy(() =>
-  import("../pages/restaurant-menu/add-on-collection/AddOnCollections")
-);
-const AddOn = lazy(() => import("../pages/restaurant-menu/add-on/AddOn"));
-const MenuCategories = lazy(() =>
-  import("../pages/restaurant-menu/menu-categories/MenuCategories")
-);
-const Cuisines = lazy(() =>
-  import("../pages/restaurant-menu/cuisines/Cuisines")
-);
-const Products = lazy(() =>
-  import("../pages/restaurant-menu/products/Products")
-);
-
-// Store Items & Menu
-const StoreAddOnCollections = lazy(() =>
-  import("../pages/store-menu/add-on-collection/StoreAddOnCollection")
-);
-const StoreAddOn = lazy(() => import("../pages/store-menu/add-on/StoreAddOn"));
-
-const StoreMenuCategories = lazy(() =>
-  import("../pages/store-menu/menu-categories/StoreMenuCategories")
-);
-
-const StoreCuisines = lazy(() =>
-  import("../pages/store-menu/cuisines.jsx/StoreCuisines")
-);
-
-const StoreProducts = lazy(() =>
-  import("../pages/store-menu/products/StoreProducts")
-);
+// Restaurant/Store Items & Menu removed (consolidated under Food Management)
 
 // Restaurant Orders
 const RestaurantOrders = lazy(() =>
@@ -120,18 +89,7 @@ const CollectCash = lazy(() => import("../pages/collect-cash/CollectCash"));
 
 //item report
 const ItemReport = lazy(() => import("../pages/item-report/ItemReport"));
-// Store Orders
-const StoreOrders = lazy(() => import("../pages/store-orders/StoreOrders"));
-const StoreDeliveredOrders = lazy(() =>
-  import("../pages/store-orders/StoreDeliveredOrders")
-);
-const StoreCancelledOrders = lazy(() =>
-  import("../pages/store-orders/StoreCancelledOrders")
-);
-const StoreScheduleOrders = lazy(() =>
-  import("../pages/store-orders/StoreScheduleOrders")
-);
-const StoreRejected = lazy(() => import("../pages/store-orders/StoreRejected"));
+// Store Orders removed
 
 // All Restaurants
 const Restaurants = lazy(() => import("../pages/restaurants/Restaurants"));
@@ -183,6 +141,9 @@ const OverAllEarning = lazy(() => import("../pages/earnings/OverallEarnings"));
 // Front Settings
 const FrontSettings = lazy(() =>
   import("../pages/front-settings/FrontSetting")
+);
+const HeaderDesign = lazy(() =>
+  import("../pages/front-settings/HeaderDesign")
 );
 // Banners
 const Banners = lazy(() => import("../pages/banners/Banners"));
@@ -289,7 +250,7 @@ const coreRoutes = [
     component: Customers,
   },
   {
-    path: "/restaurant-owners",
+    path: "/branch-owners",
     component: RestaurantOwners,
   },
   {
@@ -337,52 +298,7 @@ const coreRoutes = [
     path: "/rejected-deliveryman",
     component: RejectedDriver,
   },
-  // Restaurant Items & Menu
-  {
-    path: "/restaurant/add-on-collections",
-    component: AddOnCollections,
-  },
-  {
-    path: "/restaurant/add-on",
-    component: AddOn,
-  },
-  {
-    path: "/restaurant/menu-categories",
-    component: MenuCategories,
-  },
-  {
-    path: "/restaurant/cuisines",
-    component: Cuisines,
-  },
-  {
-    path: "/restaurant/products",
-    component: Products,
-  },
-  // Store Items & Menu
-  {
-    path: "/store/add-on-collections",
-    component: StoreAddOnCollections,
-  },
-
-  {
-    path: "/store/add-on",
-    component: StoreAddOn,
-  },
-
-  {
-    path: "/store/menu-categories",
-    component: StoreMenuCategories,
-  },
-
-  {
-    path: "/store/cuisines",
-    component: StoreCuisines,
-  },
-
-  {
-    path: "/store/products",
-    component: StoreProducts,
-  },
+  // Restaurant/Store Items & Menu — removed
 
   // Restaurant Orders
   {
@@ -444,32 +360,11 @@ const coreRoutes = [
     path: "/active-orders",
     component: ActiveOrders,
   },
-  // Store Orders
-  {
-    path: "/store/all-orders",
-    component: StoreOrders,
-  },
-  {
-    path: "/store/delivered-orders",
-    component: StoreDeliveredOrders,
-  },
-  {
-    path: "/store/cancelled-orders",
-    component: StoreCancelledOrders,
-  },
-  {
-    path: "/store/schedule-orders",
-    component: StoreScheduleOrders,
-  },
-
   {
     path: "/vehicle-management",
     component: VehicleManagement,
   },
-  {
-    path: "/store-rejected",
-    component: StoreRejected,
-  },
+  // Store Orders removed
 
   // All Zones
   {
@@ -569,6 +464,10 @@ const coreRoutes = [
   {
     path: "/front-settings",
     component: FrontSettings,
+  },
+  {
+    path: "/header-design",
+    component: HeaderDesign,
   },
   // Current Orders
   {

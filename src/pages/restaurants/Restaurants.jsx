@@ -90,7 +90,7 @@ export default function Restaurants() {
     },
     {
       field: "name",
-      header: t("Restaurant Name"),
+      header: t("Branch Name"),
     },
     {
       field: "city",
@@ -208,7 +208,7 @@ export default function Restaurants() {
           <div className="bg-white rounded-lg p-5">
             <div className="flex justify-between items-center flex-wrap gap-5">
               <h2 className="text-themeRed text-lg font-bold font-norms">
-                {t("All Restaurants")}
+                {t("All Branches")}
               </h2>
               <div className="flex gap-2 items-center flex-wrap">
                 <Helment
@@ -219,7 +219,7 @@ export default function Restaurants() {
                 />
                 <div className="flex gap-2">
                   <HelmetBtn
-                    text={t("Add New Restaurant")}
+                    text={t("Add New Branch")}
                     onClick={() => {
                       navigate("/add-restaurant");
                     }}

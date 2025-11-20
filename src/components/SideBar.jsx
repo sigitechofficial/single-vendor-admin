@@ -78,8 +78,7 @@ export default function SideBar() {
       location.includes("/user-details") ||
       location.includes("/driver-details") ||
       location.includes("/customers") ||
-      location.includes("/restaurant-owner") ||
-      location.includes("/store-owner") ||
+      location.includes("/branch-owners") ||
       location.includes("/drivers") ||
       location === "/admin" ||
       location.includes("/employees") ||
@@ -93,17 +92,14 @@ export default function SideBar() {
       location.includes("/restaurant/menu-categories") ||
       location.includes("/restaurant/add-on") ||
       location.includes("/restaurant/products") ||
-      location.includes("/restaurant/cuisines")
-    ) {
-      setActiveDropdown("Restaurant Items & Menu");
-    } else if (
+      location.includes("/restaurant/cuisines") ||
       location.includes("/store/add-on-collections") ||
       location.includes("/store/menu-categories") ||
       location.includes("/store/add-on") ||
       location.includes("/store/products") ||
       location.includes("/store/cuisines")
     ) {
-      setActiveDropdown("Store Items & Menu");
+      setActiveDropdown("Food Management");
     } else if (
       location.includes("/notifications") ||
       location.includes("/vouchers") ||
@@ -120,7 +116,7 @@ export default function SideBar() {
       location.includes("/order-details") ||
       location.includes("/rejected")
     ) {
-      setActiveDropdown("Restaurant Orders");
+      setActiveDropdown("Branches Orders");
     } else if (
       location.includes("/overall-earnings") ||
       location.includes("/admin-earnings") ||
@@ -129,15 +125,6 @@ export default function SideBar() {
       location.includes("/store-earnings")
     ) {
       setActiveDropdown("Earnings");
-    } else if (
-      location.includes("/store/all-orders") ||
-      location.includes("/store/delivered-orders") ||
-      location.includes("/store/cancelled-orders") ||
-      location.includes("/store/schedule-orders") ||
-      location.includes("/order-details") ||
-      location.includes("/store-rejected")
-    ) {
-      setActiveDropdown("Store Orders");
     } else if (
       location.includes("/deliveryman-list") ||
       location.includes("/new-deliveryman") ||
@@ -270,8 +257,7 @@ export default function SideBar() {
           nestedItems={[
             "User Management",
             "Customer",
-            "Restaurant Owner",
-            "Store Owner",
+            "Branches Owner",
             "Drivers",
             "Admin",
             "Staff",
@@ -293,14 +279,8 @@ export default function SideBar() {
                 Icon={FaUserFriends}
               />
               <ListItems
-                title={t("Restaurant Owner")}
-                to="/restaurant-owners"
-                // active={location === "/user-details"}
-                Icon={FaUsersCog}
-              />
-              <ListItems
-                title={t("Store Owner")}
-                to="/store-owners"
+                title={t("Branches Owner")}
+                to="/branch-owners"
                 // active={location === "/user-details"}
                 Icon={FaUsersCog}
               />
@@ -390,29 +370,21 @@ export default function SideBar() {
           searchTab={searchTab}
           title={t("Reports & Analytics")}
           Icon={FaUser}
-          active={
-            location === "/reports-restaurant" || location === "/reports-store"
-          }
+          active={location === "/reports-restaurant"}
           Angle={
             isDropdownActive("Reports & Analytics") ? FaAngleUp : FaAngleDown
           }
           onClick={() => handleActive("Reports & Analytics")}
-          nestedItems={["Restaurant Reports", "Store Reports"]}
+          nestedItems={["Branches Report"]}
         />
         {isDropdownActive("Reports & Analytics") && (
           <>
             <div className="px-3 relative space-y-1">
               <ListItems
-                title={t("Restaurant Reports")}
+                title={t("Branches Report")}
                 to="/reports-restaurant"
                 active={location === "/reports-restaurant"}
                 Icon={FaUserGear}
-              />
-              <ListItems
-                title={t("Store Reports")}
-                to="/reports-store"
-                active={location === "/reports-store"}
-                Icon={FaUserFriends}
               />
               {/* <ListItems
                 title={t("Rejected Delivery Man")}
@@ -429,123 +401,7 @@ export default function SideBar() {
         <ListHead
           hasPermission={hasPermission}
           searchTab={searchTab}
-          title={t("Restaurant Items & Menu")}
-          Icon={MdTableRestaurant}
-          active={
-            location === "/restaurant/add-on-collections" ||
-            location === "/restaurant/add-on" ||
-            location === "/restaurant/menu-categories" ||
-            location === "/restaurant/cuisines" ||
-            location === "/restaurant/products"
-          }
-          Angle={
-            isDropdownActive("Restaurant Items & Menu")
-              ? FaAngleUp
-              : FaAngleDown
-          }
-          onClick={() => handleActive("Restaurant Items & Menu")}
-          nestedItems={[
-            "Add On Collections",
-            "Add On",
-            "Menu Categories",
-            "All Cuisines",
-            "All Products",
-          ]}
-        />
-        {isDropdownActive("Restaurant Items & Menu") && (
-          <>
-            <div className="mx-3 relative space-y-1">
-              <ListItems
-                title={t("Add On Collections")}
-                to="/restaurant/add-on-collections"
-                Icon={MdAddBox}
-              />
-              <ListItems
-                title={t("Add On")}
-                to="/restaurant/add-on"
-                Icon={RiAddFill}
-              />
-              <ListItems
-                title={t("Menu Categories")}
-                to="/restaurant/menu-categories"
-                Icon={IoMenu}
-              />
-              <ListItems
-                title={t("All Cuisines")}
-                to="/restaurant/cuisines"
-                Icon={MdRestaurant}
-              />
-              <ListItems
-                title={t("All Products")}
-                to="/restaurant/products"
-                Icon={BsBoxSeamFill}
-              />
-              <hr className="w-full opacity-25" />
-            </div>
-          </>
-        )}
-
-        <ListHead
-          hasPermission={hasPermission}
-          searchTab={searchTab}
-          title={t("Store Items & Menu")}
-          Icon={IoStorefront}
-          active={
-            location === "/store/add-on-collections" ||
-            location === "/store/add-on" ||
-            location === "/store/menu-categories" ||
-            location === "/store/cuisines" ||
-            location === "/store/products"
-          }
-          Angle={
-            isDropdownActive("Store Items & Menu") ? FaAngleUp : FaAngleDown
-          }
-          onClick={() => handleActive("Store Items & Menu")}
-          nestedItems={[
-            "Add On Collection",
-            "Add On",
-            "Menu Categories",
-            "All Cuisines",
-            "All Products",
-          ]}
-        />
-        {isDropdownActive("Store Items & Menu") && (
-          <>
-            <div className="mx-3 relative space-y-1">
-              <ListItems
-                title={t("Add On Collection")}
-                to="/store/add-on-collections"
-                Icon={MdAddBox}
-              />
-              <ListItems
-                title={t("Add On")}
-                to="/store/add-on"
-                Icon={RiAddFill}
-              />
-              <ListItems
-                title={t("Menu Categories")}
-                to="/store/menu-categories"
-                Icon={IoMenu}
-              />
-              <ListItems
-                title={t("Store Types")}
-                to="/store/cuisines"
-                Icon={MdRestaurant}
-              />
-              <ListItems
-                title={t("All Products")}
-                to="/store/products"
-                Icon={BsBoxSeamFill}
-              />
-              <hr className="w-full opacity-25" />
-            </div>
-          </>
-        )}
-
-        <ListHead
-          hasPermission={hasPermission}
-          searchTab={searchTab}
-          title={t("Restaurant Orders")}
+          title={t("Branches Orders")}
           Icon={BsBoxSeamFill}
           active={
             location === "/restaurant/all-orders" ||
@@ -555,10 +411,8 @@ export default function SideBar() {
             location === "/order-details" ||
             location === "/rejected"
           }
-          Angle={
-            isDropdownActive("Restaurant Orders") ? FaAngleUp : FaAngleDown
-          }
-          onClick={() => handleActive("Restaurant Orders")}
+          Angle={isDropdownActive("Branches Orders") ? FaAngleUp : FaAngleDown}
+          onClick={() => handleActive("Branches Orders")}
           nestedItems={[
             "All Orders",
             "Delivered",
@@ -567,7 +421,7 @@ export default function SideBar() {
             "Rejected",
           ]}
         />
-        {isDropdownActive("Restaurant Orders") && (
+        {isDropdownActive("Branches Orders") && (
           <>
             <div className="mx-3 relative space-y-1">
               <ListItems
@@ -605,62 +459,6 @@ export default function SideBar() {
                 to="/completed-rides"
                 Icon={MdCancel}
               /> */}
-              <hr className="w-full opacity-25" />
-            </div>
-          </>
-        )}
-
-        <ListHead
-          hasPermission={hasPermission}
-          searchTab={searchTab}
-          title={t("Store Orders")}
-          Icon={BsBoxSeamFill}
-          active={
-            location === "/store/all-orders" ||
-            location === "/store/delivered-orders" ||
-            location === "/store/cancelled-orders" ||
-            location === "/store/schedule-orders" ||
-            location === "/order-details" ||
-            location === "/store-rejected"
-          }
-          Angle={isDropdownActive("Store Orders") ? FaAngleUp : FaAngleDown}
-          onClick={() => handleActive("Store Orders")}
-          nestedItems={[
-            "All Orders",
-            "Delivered",
-            "Cancelled",
-            "Schedule",
-            "Rejected",
-          ]}
-        />
-        {isDropdownActive("Store Orders") && (
-          <>
-            <div className="mx-3 relative space-y-1">
-              <ListItems
-                title={t("All Orders")}
-                to="/store/all-orders"
-                Icon={BsBoxSeamFill}
-              />
-              <ListItems
-                title={t("Delivered")}
-                to="/store/delivered-orders"
-                Icon={IoIosCheckbox}
-              />
-              <ListItems
-                title={t("Cancelled")}
-                to="/store/cancelled-orders"
-                Icon={MdCancel}
-              />
-              <ListItems
-                title={t("Schedule")}
-                to="/store/schedule-orders"
-                Icon={IoIosCheckbox}
-              />
-              <ListItems
-                title={t("Rejected")}
-                to="/store-rejected"
-                Icon={MdCancel}
-              />
               <hr className="w-full opacity-25" />
             </div>
           </>
@@ -912,7 +710,7 @@ export default function SideBar() {
         <ListHead
           hasPermission={hasPermission}
           searchTab={searchTab}
-          title={t("Restaurants")}
+          title={t("Branches")}
           to="/all-restaurants"
           active={
             location === "/edit-restaurant" || location === "/add-restaurant"
@@ -920,14 +718,6 @@ export default function SideBar() {
           Icon={MdTableRestaurant}
         />
 
-        <ListHead
-          hasPermission={hasPermission}
-          searchTab={searchTab}
-          title={t("Stores")}
-          active={location === "/edit-store"}
-          to="/all-stores"
-          Icon={IoStorefront}
-        />
         <ListHead
           hasPermission={hasPermission}
           searchTab={searchTab}
@@ -961,8 +751,8 @@ export default function SideBar() {
         <ListHead
           hasPermission={hasPermission}
           searchTab={searchTab}
-          title={t("Front Settings")}
-          to="/front-settings"
+          title={t("Header Design")}
+          to="/header-design"
           Icon={IoSettings}
         />
         <ListHead

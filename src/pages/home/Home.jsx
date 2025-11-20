@@ -352,13 +352,7 @@ export default function Home() {
             <div className="col-span-12 space-y-5">
               <div className="grid grid-cols-3 gap-5">
                 <HomeCards
-                  title={t("Store Reports")}
-                  image="1"
-                  to="/store-reports"
-                  dataTestId="home-store-reports-link-btn"
-                />
-                <HomeCards
-                  title={t("Restaurant Reports")}
+                  title={t("Branches Report")}
                   image="1"
                   to="/restaurant-reports"
                   dataTestId="home-restaurant-reports-link-btn"
@@ -446,7 +440,7 @@ export default function Home() {
                 {restaurant?.rest?.value ? (
                   <>
                     <div className="space-y-1.5 mt-10">
-                        <ul className="flex flex-wrap items-center gap-8">
+                      <ul className="flex flex-wrap items-center gap-8">
                         <TabButton
                           title={t("Performance")}
                           tab={tab}
